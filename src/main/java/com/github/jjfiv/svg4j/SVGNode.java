@@ -24,6 +24,7 @@ public class SVGNode {
     return this;
   }
   public SVGNode attr(String key, Number val) {
+    assert(val != null);
     this.attrs.put(key, val.toString());
     return this;
   }
