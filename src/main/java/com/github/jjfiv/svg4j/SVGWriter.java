@@ -52,6 +52,10 @@ public class SVGWriter {
     for (SVGNode child : svg.children) {
       write(child, writer);
     }
+    // add contents if any
+    if(svg.contents != null) {
+      writer.writeCharacters(svg.contents);
+    }
     writer.writeEndElement();
   }
 }

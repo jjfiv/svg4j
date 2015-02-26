@@ -9,16 +9,11 @@ public class SVGPoint extends Point2D {
   Number x;
   Number y;
 
-  public SVGPoint(Number x, Number y) {
+  private SVGPoint(Number x, Number y) {
     assert(x != null);
     assert(y != null);
     this.x = x;
     this.y = y;
-  }
-
-  /** Constructor from java.awt.geom classes */
-  public SVGPoint(Point2D input) {
-    this(input.getX(), input.getY());
   }
 
   @Override
@@ -42,6 +37,10 @@ public class SVGPoint extends Point2D {
     return SVGNode.of("circle").attr("cx", x).attr("cy", y).attr("r", radius);
   }
 
+  /** Constructor from java.awt.geom classes */
+  public static SVGPoint of(Point2D input) {
+    return new SVGPoint(input.getX(), input.getY());
+  }
   public static SVGPoint of(double x, double y) {
     return new SVGPoint(x,y);
   }

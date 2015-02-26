@@ -11,11 +11,13 @@ import java.util.Map;
 public class SVGNode {
   public String kind;
   public Map<String,String> attrs;
+  public String contents;
   public List<SVGNode> children;
 
   protected SVGNode(String kind) {
     this.kind = kind;
     this.attrs = new HashMap<>();
+    this.contents = null;
     this.children = new ArrayList<>();
   }
 
@@ -57,7 +59,7 @@ public class SVGNode {
   public SVGNode fill(String color) {
     return attr("fill", color);
   }
-  public SVGNode stroke(String color, int width) {
+  public SVGNode stroke(String color, double width) {
     return attr("stroke", color).attr("stroke-width", width);
   }
 
@@ -95,5 +97,9 @@ public class SVGNode {
   public SVGNode printAttrs() {
     System.out.println(attrs);
     return this;
+  }
+
+  public void contents(String contents) {
+    this.contents = contents;
   }
 }
